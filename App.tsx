@@ -8,8 +8,8 @@ export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.container}>
-        <Image source={warehouse} style={{ width: 400, height: 240 }}/>
-        <Text style={{color: '#33c', fontSize: 42}}>Lager-Appen</Text>
+        <Image source={warehouse} style={{ width: "auto", height: 100 }}/>
+        <Text style={{color: '#33c', fontSize: 42, textAlign: "center"}}>Infinity Warehouses</Text>
         <Stock />
         <StatusBar style="auto" />
       </View>

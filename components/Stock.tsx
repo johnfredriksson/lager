@@ -11,7 +11,7 @@ function StockList() {
       .then(response => response.json())
       .then(result => setProducts(result.data));
 
-    const list = products.map((product, index) => <Text style={Base.stockItem}>{ product.name } - { product.stock }st</Text>);
+    const list = products.map((product, index) => <Text key={index} style={Base.stockItem}>{ product.name } - { product.stock }st</Text>);
   
     return (
       <View>

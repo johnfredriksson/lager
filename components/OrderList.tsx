@@ -29,7 +29,7 @@ export default function OrderList({ navigation }) {
     
     return (
         <View>
-            <Text style={Base.header4}>Ordrar redo att plockas</Text>
+            <Text style={Typography.header4}>Ordrar redo att plockas</Text>
             {listOfOrders}
         </View>
     );

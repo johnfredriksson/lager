@@ -1,6 +1,6 @@
 import { View, Text, Button } from "react-native";
 import orderModel from "../models/orders.ts";
-import { Base } from "../styles/index.js";
+import { Base, Typography } from "../styles/index.js";
 
 export default function PickList({ route, navigation }) {
     const { order } = route.params;
@@ -39,7 +39,7 @@ export default function PickList({ route, navigation }) {
             {orderItemsList}
 
 
-            {valid == true ? <Button title="Plocka order" onPress={pick} />: <Text style={Base.header4}>Otillräckligt lagersaldo</Text>}
+            {valid == true ? <Button title="Plocka order" onPress={pick} />: <Text style={Typography.header4}>Otillräckligt lagersaldo</Text>}
  
         </View>
     )

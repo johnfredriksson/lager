@@ -39,7 +39,6 @@ export const blueFont = {
 };
 
 export const comment = {
-    textStyle: "italic",
     color: "darkgray",
     marginBottom: 5
 };

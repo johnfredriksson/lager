@@ -4,7 +4,10 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Stock from './Stock';
 import { Base, Typography } from '../styles';
 
-export default function Home() {
+export default function Home({route}) {
+  if (route.params?.logout) {
+    console.log("hej");
+  }
   return (
     <SafeAreaView style={Base.container}>
       <View style={Base.container}>

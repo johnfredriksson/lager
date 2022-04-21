@@ -27,5 +27,5 @@ export const normal = {
 };
 
 export const label = {
-    maringLeft: 10
+    marginLeft: 10
 }

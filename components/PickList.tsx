@@ -10,7 +10,7 @@ export default function PickList({ route, navigation }) {
             orderModel.pickOrder(item);
         })
         orderModel.updateOrderStatus(order, 200)
-        navigation.push("List", { reload: true });
+        navigation.navigate("List", { reload: true });
     }
 
     const orderItemsList = order.order_items.map((item, index) => {

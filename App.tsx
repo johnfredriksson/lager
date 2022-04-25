@@ -11,6 +11,7 @@ import warehouse from './assets/warehouse.png';
 import authModel from "./models/auth";
 import Invoices from './components/Invoices.tsx';
 import Auth from "./components/auth/Auth.tsx";
+import Ship from "./components/Ship.tsx";
 
 
 const routeIcons = {
@@ -58,6 +59,7 @@ export default function App() {
               {() => <Auth setIsLoggedIn={setIsLoggedIn} />}
             </Tab.Screen>
           }
+          <Tab.Screen name="Skicka" component={Ship} />
         </Tab.Navigator>
       </NavigationContainer>
       <StatusBar style="auto" />

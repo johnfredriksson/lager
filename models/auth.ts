@@ -5,10 +5,14 @@ import storage from "./storage";
 const auth = {
     loggedIn: async function loggedIn() {
         const token = await storage.readToken();
-        const twentyFourHours = 1000 * 60 * 60 * 24;
-        const notExpired = (new Date().getTime() - token.date) < twentyFourHours;
+        if (token) {
+            const twentyFourHours = 1000 * 60 * 60 * 24;
+            const notExpired = (new Date().getTime() - token.date) < twentyFourHours;
 
-        return token && notExpired;
+            return token && notExpired;
+        } else {
+            return false;
+        }
     },
     login: async function login(email: string, password: string) {
         const data = {

@@ -7,6 +7,8 @@ import { useEffect, useState } from "react";
 import * as Location from "expo-location";
 import { Button } from "react-native-paper";
 import ordersModel from "../models/orders";
+import { showMessage } from "react-native-flash-message";
+
 
 export default function ShipOrder({ route, navigation }) {
     const {order} = route.params;
@@ -51,6 +53,11 @@ export default function ShipOrder({ route, navigation }) {
     async function shipIt() {
         await ordersModel.updateOrderStatus(order, 400);
         navigation.navigate("List");
+        showMessage({
+            message: "Skickad",
+            description: "Ordern är nu registrerad som skickad",
+            type: "success",
+        });
     }
 
     return (

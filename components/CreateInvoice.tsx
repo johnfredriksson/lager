@@ -6,6 +6,8 @@ import ordersModel from "../models/orders";
 import { Picker } from '@react-native-picker/picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import invoiceModel from "../models/invoices";
+import { showMessage } from "react-native-flash-message";
+
 
 function DateDropDown(props) {
     const [dropDownDate, setDropDownDate] = useState<Date>(new Date());
@@ -84,6 +86,12 @@ export default function CreateInvoice({ navigation }) {
         ordersModel.updateOrderStatus(order, 600)
         invoiceModel.createInvoice(order);
         navigation.navigate("Invoices", {reload: true});
+
+        showMessage({
+            message: "Tillagd",
+            description: "Faktura registrerad",
+            type: "success",
+        });
     };
     
     return (

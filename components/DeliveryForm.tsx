@@ -6,8 +6,7 @@ import stock from "../models/stock";
 import Product from "../interfaces/product";
 import DateTimePicker from '@react-native-community/datetimepicker';
 import deliveryModel from '../models/delivery';
-import { useNavigation } from '@react-navigation/native';
-
+import { showMessage } from "react-native-flash-message";
 import Delivery from '../interfaces/delivery';
 
 function DateDropDown(props) {
@@ -73,16 +72,29 @@ export default function DeliveryForm({ navigation }) {
     const [currentProduct, setCurrentProduct] = useState<Partial<Product>>({});
 
     async function addDelivery() {
-        await deliveryModel.addDelivery(delivery);
-        const updatedProduct = {
-            ...currentProduct,
-            stock: (currentProduct.stock || 0) + (delivery.amount || 0)
+        if (delivery.amount && delivery.delivery_date && delivery.product_id) {
+            await deliveryModel.addDelivery(delivery);
+            const updatedProduct = {
+                ...currentProduct,
+                stock: (currentProduct.stock || 0) + (delivery.amount || 0)
 
-        };
+            };
+            
+            await stock.updateStock(updatedProduct);
         
-        await stock.updateStock(updatedProduct);
-    
-        navigation.navigate("List", { reload: true });
+            navigation.navigate("List", { reload: true });
+            showMessage({
+                message: "Tillagd",
+                description: "Inleverans registrerad",
+                type: "success",
+            });
+        } else {
+            showMessage({
+                message: "Saknas",
+                description: "Produkt-id, kvantitet eller datum saknas",
+                type: "warning",
+            });
+        }
     }
 
 

@@ -12,6 +12,7 @@ import authModel from "./models/auth";
 import Invoices from './components/Invoices.tsx';
 import Auth from "./components/auth/Auth.tsx";
 import Ship from "./components/Ship.tsx";
+import FlashMessage from "react-native-flash-message";
 
 
 const routeIcons = {
@@ -50,7 +51,6 @@ export default function App() {
           <Tab.Screen name="Plock" component={Pick} />
           <Tab.Screen name="Leverans" component={Deliveries} />
           {isLoggedIn ?
-            // <Tab.Screen name="Faktura" component={Invoices} /> :
             <Tab.Screen name="Faktura">
               {() => <Invoices setIsLoggedIn={setIsLoggedIn} />}
             </Tab.Screen> :
@@ -63,6 +63,7 @@ export default function App() {
         </Tab.Navigator>
       </NavigationContainer>
       <StatusBar style="auto" />
+      <FlashMessage position="top" />
     </View>
   );
 }

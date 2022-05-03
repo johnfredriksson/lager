@@ -5,23 +5,16 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import InvoicesList from "./InvoicesList.tsx";
 import CreateInvoice from "./CreateInvoice.tsx";
 
-export default function Invoices({navigation}) {
+export default function Invoices(props) {
 
     const Stack = createNativeStackNavigator();
     
     return (
             <Stack.Navigator initialRouteName="Invoices">
-                <Stack.Screen name="Invoices" component={InvoicesList}></Stack.Screen>
+                <Stack.Screen name="Invoices">
+                    {(screenProps) => <InvoicesList {...screenProps} setIsLoggedIn={props.setIsLoggedIn} /> }
+                </Stack.Screen>
                 <Stack.Screen name="CreateInvoice" component={CreateInvoice}></Stack.Screen>
             </Stack.Navigator>
     );
 }
-{/* <Button
-        onPress={() => {
-            authModel.logout();
-            navigation.navigate("Lager", { logout: true});
-            
-        }}
-        title="Logga ut"
-    />
-</View> */}

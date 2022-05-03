@@ -4,14 +4,12 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Stock from './Stock';
 import { Base, Typography } from '../styles';
 
-export default function Home({route}) {
-  if (route.params?.logout) {
-    console.log("hej");
-  }
+export default function Home({products, setProducts}) {
+
   return (
     <SafeAreaView style={Base.container}>
       <View style={Base.container}>
-        <Stock />
+        <Stock products={products} setProducts={setProducts} />
         <StatusBar style="auto" />
       </View>
     </SafeAreaView>

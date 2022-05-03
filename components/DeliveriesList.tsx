@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { View, Text, Button } from "react-native";
+import { ScrollView, View, Text, Button } from "react-native";
 import config from "./../config/config.json";
 import { Base, Typography } from '../styles';
 
@@ -26,15 +26,15 @@ export default function DeliveryList({ navigation }) {
     });
     
     return (
-        <View style={Base.base}>
+        <ScrollView style={Base.base}>
             <Text style={Typography.header4}>Inleveranser</Text>
-            {valid == true ? listOfDeliveries: <Text style={Base.highlightedCentered}>Inga leveranser att visa</Text>}
             <Button
                 title="Skapa ny inleverans"
                 onPress={() => {
                     navigation.navigate('Form');
                 }}
             />
-        </View>
+            {valid == true ? listOfDeliveries: <Text style={Base.highlightedCentered}>Inga leveranser att visa</Text>}
+        </ScrollView>
     );
 }

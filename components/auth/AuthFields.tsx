@@ -28,6 +28,7 @@ export default function AuthFields({ auth, setAuth, title, submit, navigation}) 
                 onPress={() => {
                     submit();
                 }}
+                testID="authButton"
             />
             {title === "Logga in" &&
                 <Button
@@ -35,6 +36,7 @@ export default function AuthFields({ auth, setAuth, title, submit, navigation}) 
                     onPress={() => {
                         navigation.navigate("Register");
                     }}
+                    testID="optRegisterButton"
                 />
             }
         </View>

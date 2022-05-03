@@ -27,6 +27,7 @@ const Tab = createBottomTabNavigator();
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState<Boolean>(false);
+  const [products, setProducts] = useState([]);
 
   useEffect(async () => {
     setIsLoggedIn(await authModel.loggedIn() );
@@ -47,9 +48,15 @@ export default function App() {
           tabBarInactiveTintColor: 'gray',
         })}
         >
-          <Tab.Screen name="Lager" component={Home} />
-          <Tab.Screen name="Plock" component={Pick} />
-          <Tab.Screen name="Leverans" component={Deliveries} />
+          <Tab.Screen name="Lager">
+              {() => <Home products={products} setProducts={setProducts} />}
+          </Tab.Screen>
+          <Tab.Screen name="Plock">
+              {() => <Pick setProducts={setProducts} />}
+          </Tab.Screen>
+          <Tab.Screen name="Leverans">
+            {() => <Deliveries setProducts={setProducts} />}
+          </Tab.Screen>
           {isLoggedIn ?
             <Tab.Screen name="Faktura">
               {() => <Invoices setIsLoggedIn={setIsLoggedIn} />}

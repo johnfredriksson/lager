@@ -1,8 +1,9 @@
 import { View, Text, Button } from "react-native";
 import orderModel from "../models/orders.ts";
 import { Base, Typography } from "../styles/index.js";
+import stockModel from "../models/stock";
 
-export default function PickList({ route, navigation }) {
+export default function PickList({ route, navigation, setProducts }) {
     const { order } = route.params;
 
     async function pick() {
@@ -10,6 +11,7 @@ export default function PickList({ route, navigation }) {
             orderModel.pickOrder(item);
         })
         orderModel.updateOrderStatus(order, 200)
+        setProducts(await stockModel.getStock());
         navigation.navigate("List", { reload: true });
     }
 

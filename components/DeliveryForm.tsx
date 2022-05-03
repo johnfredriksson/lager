@@ -67,7 +67,7 @@ function ProductDropDown(props) {
     );
 }
 
-export default function DeliveryForm({ navigation }) {
+export default function DeliveryForm({ navigation, setProducts }) {
     const [delivery, setDelivery] = useState<Partial<Delivery>>({});
     const [currentProduct, setCurrentProduct] = useState<Partial<Product>>({});
 
@@ -81,6 +81,7 @@ export default function DeliveryForm({ navigation }) {
             };
             
             await stock.updateStock(updatedProduct);
+            setProducts(await stock.getStock());
         
             navigation.navigate("List", { reload: true });
             showMessage({

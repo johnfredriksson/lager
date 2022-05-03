@@ -28,7 +28,7 @@ function InvoicesListProcess(props) {
     );
 }
 
-export default function InvoicesList({navigation, route}) {
+export default function InvoicesList({navigation, route, setIsLoggedIn}) {
     const { reload } = route.params || false;
 
     const [allInvoices, setAllInvoices] = useState([]);
@@ -67,6 +67,7 @@ export default function InvoicesList({navigation, route}) {
                 title="Logga ut"
                 onPress={() => {
                     authModel.logout();
+                    setIsLoggedIn(false);
                     navigation.navigate("Lager", {reload: true});
                 }}
             />
